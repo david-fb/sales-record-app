@@ -1,5 +1,5 @@
 {
-  "extends": ["next/core-web-vitals", "eslint:recommended", "next", "plugin:jsx-a11y/recommended", "prettier"],
+  "extends": ["next/core-web-vitals", "eslint:recommended", "plugin:@typescript-eslint/recommended", "next", "plugin:jsx-a11y/recommended", "prettier"],
   "root": true,
   "env": {
     "browser": true,
@@ -7,6 +7,8 @@
     "node": true,
     "es6": true
   },
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
   "rules": {
     "semi": ["error", "always"]
   }
