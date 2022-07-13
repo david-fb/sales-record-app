@@ -1,4 +1,5 @@
-import '../styles/globals.css';
+import '@styles/globals.css';
+import '@styles/Table.css';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'next-themes';
 

@@ -1,0 +1,31 @@
+@media (max-width: 1023px) {
+  table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  table tbody tr {
+    margin-bottom: 20px;
+    background: #fff;
+  }
+  table td {
+    position: relative;
+    padding: 10px;
+    padding-left: 50%;
+    white-space: normal;
+    text-align: left;
+    border: none;
+    border-bottom: 1px solid #ddd;
+  }
+  table td:before {
+    position: absolute;
+    content: attr(data-title);
+    top: 10px;
+    left: 10px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+  }
+}

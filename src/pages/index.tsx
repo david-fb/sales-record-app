@@ -1,22 +1,17 @@
-import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
-import { useTheme } from 'next-themes';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 
 const Home: NextPage = () => {
-  const { theme, setTheme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState<boolean>(false);
+  const [text, setText] = useState<string>('');
+  const router = useRouter();
+  const handleClick = () => {
+    if (text) router.push(`/spreadsheet/${text}`);
+  };
 
-  useEffect(() => setMounted(true), []);
-
-  if (!mounted) return null;
-
-  const toggleTheme = (): void => {
-    if (theme === 'light' || resolvedTheme === 'light') {
-      setTheme('dark');
-      return;
-    }
-    setTheme('light');
+  const createHandleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    setText(evt.target.value);
   };
 
   return (
@@ -27,11 +22,13 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="bg-white dark:bg-black">
-        <h1 className="text-red-400 text-3xl font-bold underline">Hello world!</h1>
-        <button className="text-black dark:text-white" onClick={toggleTheme}>
-          Change theme
-        </button>
+      <main
+        className="bg-stone-50 w-full min-h-screen dark:bg-stone-900
+      flex flex-col"
+      >
+        <label htmlFor="spreadsheet">Insert Spreadsheet id</label>
+        <input type="text" name="spreadsheet" value={text} onChange={createHandleChange} />
+        <button onClick={handleClick}>Open</button>
       </main>
 
       <footer></footer>
