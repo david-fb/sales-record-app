@@ -1,27 +1,9 @@
-import { useEffect, useState } from 'react';
 import Table from '@components/Table';
+import useAppCtx from '@hooks/useAppCtx';
 
-interface Props {
-  spreadsheetId: spreadsheetIdType;
-  titles: titlesType;
-  activeSheet: activeSheetType;
-}
-
-export default function Content({ spreadsheetId, titles, activeSheet }: Props) {
-  const [data, setData] = useState<dataType>([]);
-
-  useEffect(() => {
-    const getData = async () => {
-      const res = await fetch(`/api/data/all?spreadsheetId=${spreadsheetId}&sheet=${activeSheet}`);
-      const allData: dataType | errorObject = await res.json();
-      if ('error' in allData) {
-        setData([]);
-      } else {
-        setData(allData);
-      }
-    };
-    getData();
-  }, [spreadsheetId, activeSheet]);
+export default function Content() {
+  const { state } = useAppCtx();
+  const { data, titles } = state;
 
   return (
     <section className="px-4 overflow-x-auto">

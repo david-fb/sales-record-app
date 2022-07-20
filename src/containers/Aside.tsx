@@ -1,17 +1,12 @@
-import { useEffect, useState } from 'react';
+import useAppCtx from '@hooks/useAppCtx';
 
 import { useTheme } from 'next-themes';
 import Link from 'next/link';
 
-interface Props {
-  spreadsheetId: spreadsheetIdType;
-  activeSheet: activeSheetType;
-}
-
-export default function Aside({ spreadsheetId, activeSheet }: Props) {
-  const [mounted, setMounted] = useState<boolean>(false);
+export default function Aside() {
   const { theme, setTheme, resolvedTheme } = useTheme();
-  const [sheets, setSheets] = useState<sheetsType>([]);
+  const { state } = useAppCtx();
+  const { sheets, activeSheet } = state;
 
   const toggleTheme = () => {
     if (theme === 'light' || resolvedTheme === 'light') {
@@ -20,17 +15,6 @@ export default function Aside({ spreadsheetId, activeSheet }: Props) {
     }
     setTheme('light');
   };
-
-  useEffect(() => {
-    const getSheets = async () => {
-      const res = await fetch(`/api/data/sheets?spreadsheetId=${spreadsheetId}`);
-      setSheets(await res.json());
-    };
-    getSheets();
-    setMounted(true);
-  }, [spreadsheetId]);
-
-  if (!mounted) return null;
 
   return (
     <aside className="bg-red-200 w-60 hidden md:block">
@@ -43,7 +27,7 @@ export default function Aside({ spreadsheetId, activeSheet }: Props) {
       <ul>
         {sheets.map((sheet, index) => (
           <li key={`sheet-${index}`} className={`${activeSheet === sheet ? 'font-semibold' : ''}`}>
-            {sheet}
+            <button>{sheet}</button>
           </li>
         ))}
       </ul>

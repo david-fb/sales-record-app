@@ -1,11 +1,13 @@
 import Link from 'next/link';
 
 interface Props {
-  titles: string[];
+  titles: titlesType;
   data: dataType;
 }
 
 export default function Table({ titles, data }: Props) {
+  if (!titles) return <p>Loading...</p>;
+
   return (
     <table className="min-w-full divide-y divide-gray-200 block lg:table">
       <thead className="bg-gray-50 block lg:table-header-group">
