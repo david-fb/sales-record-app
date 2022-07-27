@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Aside() {
   const { theme, setTheme, resolvedTheme } = useTheme();
-  const { state } = useAppCtx();
+  const { state, setActiveSheet } = useAppCtx();
   const { sheets, activeSheet } = state;
 
   const toggleTheme = () => {
@@ -17,7 +17,7 @@ export default function Aside() {
   };
 
   return (
-    <aside className="bg-red-200 w-60 hidden md:block">
+    <aside className="bg-emerald-400 w-60 hidden md:block">
       <button className="text-black dark:text-white" onClick={toggleTheme}>
         Change theme
       </button>
@@ -27,7 +27,7 @@ export default function Aside() {
       <ul>
         {sheets.map((sheet, index) => (
           <li key={`sheet-${index}`} className={`${activeSheet === sheet ? 'font-semibold' : ''}`}>
-            <button>{sheet}</button>
+            <button onClick={() => setActiveSheet(sheet)}>{sheet}</button>
           </li>
         ))}
       </ul>

@@ -36,4 +36,5 @@ interface IinitialState {
 interface IuseInitialState {
   state: IinitialState;
   setSpreadsheetId: (id: spreadsheetIdType) => void
+  setActiveSheet: (sheet: sheetType) => void
 }
