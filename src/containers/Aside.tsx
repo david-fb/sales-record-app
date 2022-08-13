@@ -1,36 +1,25 @@
-import useAppCtx from '@hooks/useAppCtx';
-
-import { useTheme } from 'next-themes';
 import Link from 'next/link';
+import SheetsList from '@components/SheetsList';
+import ToggleTheme from '@components/ToggleTheme';
+import HomeIcon from '@assets/icons/HomeIcon';
 
 export default function Aside() {
-  const { theme, setTheme, resolvedTheme } = useTheme();
-  const { state, setActiveSheet } = useAppCtx();
-  const { sheets, activeSheet } = state;
-
-  const toggleTheme = () => {
-    if (theme === 'light' || resolvedTheme === 'light') {
-      setTheme('dark');
-      return;
-    }
-    setTheme('light');
-  };
-
   return (
-    <aside className="bg-emerald-400 w-60 hidden md:block">
-      <button className="text-black dark:text-white" onClick={toggleTheme}>
-        Change theme
-      </button>
-      <nav>
-        <Link href="/">Home</Link>
+    <aside className="border-r-2 border-emerald-400 w-72 hidden md:flex md:flex-col gap-2 p-8 sticky top-0 min-h-screen">
+      <h1 className="text-red-400 dark:text-emerald-500 text-2xl font-bold">Sales record!</h1>
+      <nav className="flex flex-col">
+        <Link href="/" passHref>
+          <a
+            href="home"
+            className="p-1 px-2 flex items-center gap-2 text-lg hover:bg-gray-200 dark:hover:bg-emerald-500"
+          >
+            <HomeIcon width={16} height={16} />
+            Home
+          </a>
+        </Link>
       </nav>
-      <ul>
-        {sheets.map((sheet, index) => (
-          <li key={`sheet-${index}`} className={`${activeSheet === sheet ? 'font-semibold' : ''}`}>
-            <button onClick={() => setActiveSheet(sheet)}>{sheet}</button>
-          </li>
-        ))}
-      </ul>
+      <SheetsList />
+      <ToggleTheme />
     </aside>
   );
 }

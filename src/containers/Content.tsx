@@ -6,8 +6,7 @@ export default function Content() {
   const { data, titles } = state;
 
   return (
-    <section className="px-4 overflow-x-auto">
-      <h1 className="text-red-400 text-3xl font-bold underline">Sales record!</h1>
+    <section className="px-4 overflow-x-auto w-auto">
       <Table titles={titles} data={data} />
     </section>
   );

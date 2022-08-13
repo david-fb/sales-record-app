@@ -22,7 +22,8 @@
       "@hooks/*": ["hooks/*"],
       "@containers/*": ["containers/*"],
       "@services/*": ["services/*"],
-      "@context/*": ["context/*"]
+      "@context/*": ["context/*"],
+      "@assets/*": ["assets/*"]
     }
   },
   "include": ["next-env.d.ts", "appTypes.d.ts", "**/*.ts", "**/*.tsx", "src/pages/_document.js"],
