@@ -31,10 +31,12 @@ interface IinitialState {
   activeSheet: activeSheetType;
   titles: titlesType;
   data: dataType;
+  showModal: boolean;
 }
 
 interface IuseInitialState {
   state: IinitialState;
-  setSpreadsheetId: (id: spreadsheetIdType) => void
-  setActiveSheet: (sheet: sheetType) => void
+  setSpreadsheetId: (id: spreadsheetIdType) => void;
+  setActiveSheet: (sheet: sheetType) => void;
+  toggleModal: () => void;
 }

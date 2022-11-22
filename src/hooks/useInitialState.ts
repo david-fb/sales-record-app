@@ -6,6 +6,7 @@ const initialState: IinitialState = {
   activeSheet: '',
   titles: [],
   data: [],
+  showModal: false,
 };
 
 export default function useInitialState(): IuseInitialState {
@@ -59,9 +60,14 @@ export default function useInitialState(): IuseInitialState {
     setState({...state, activeSheet: sheet});
   };
 
+  const toggleModal = () => {
+    setState({...state, showModal: !state.showModal});
+  };
+
   return {
     state,
     setSpreadsheetId,
-    setActiveSheet
+    setActiveSheet,
+    toggleModal,
   };
 }

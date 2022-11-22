@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { createContext } from 'react';
 import useInitialState from '@hooks/useInitialState';
 
@@ -8,9 +10,11 @@ const defaultValues: IuseInitialState = {
     activeSheet: '',
     titles: [],
     data: [],
+    showModal: false,
   },
-  // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
-  setSpreadsheetId: (id: spreadsheetIdType) => {},
+  setSpreadsheetId: (id: spreadsheetIdType) => { },
+  setActiveSheet: (sheet: sheetType) => { },
+  toggleModal: () => { },
 };
 
 export const AppCtx = createContext<IuseInitialState>(defaultValues);
