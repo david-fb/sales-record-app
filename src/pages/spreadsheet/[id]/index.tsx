@@ -13,7 +13,7 @@ export default function SpreadSheet({ spreadsheetId }: ISpreadsheetProps) {
   }, []);
 
   return (
-    <main className="flex min-h-screen items-start">
+    <main className="flex min-h-screen lg:grid lg:grid-cols-[300px_1fr]">
       <Aside />
       <Content />
     </main>
