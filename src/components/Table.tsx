@@ -9,7 +9,8 @@ export default function Table({ titles, data }: Props) {
   if (!titles) return <p>Loading...</p>;
 
   return (
-    <table className="min-w-full divide-y divide-gray-200 block lg:table">
+    <div className='w-full overflow-x-auto'>
+    <table className="max-w-max mx-auto divide-y divide-gray-200 block lg:table">
       <thead className="bg-gray-50 block lg:table-header-group">
         <tr className="block lg:table-row">
           {titles.map((title, index) => (
@@ -56,5 +57,6 @@ export default function Table({ titles, data }: Props) {
         ))}
       </tbody>
     </table>
+    </div>
   );
 }
